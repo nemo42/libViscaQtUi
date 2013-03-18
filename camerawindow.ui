@@ -428,6 +428,9 @@
             <layout class="QVBoxLayout" name="verticalLayout_3">
              <item>
               <widget class="QSlider" name="zoomSlider">
+               <property name="maximum">
+                <number>28672</number>
+               </property>
                <property name="orientation">
                 <enum>Qt::Horizontal</enum>
                </property>
