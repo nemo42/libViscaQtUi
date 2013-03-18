@@ -1,0 +1,1052 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <widget class="QWidget" name="widget" native="true">
+      <layout class="QVBoxLayout" name="verticalLayout_7">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <property name="margin">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="QGroupBox" name="cameraGroupBox">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+           <horstretch>1</horstretch>
+           <verstretch>1</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="title">
+          <string>Camera</string>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_2">
+          <item>
+           <widget class="QWidget" name="cameraInfoWidget" native="true">
+            <layout class="QHBoxLayout" name="horizontalLayout_2">
+             <property name="spacing">
+              <number>0</number>
+             </property>
+             <property name="margin">
+              <number>0</number>
+             </property>
+             <item>
+              <widget class="QWidget" name="cameraControlWidget" native="true">
+               <layout class="QVBoxLayout" name="verticalLayout_4">
+                <property name="spacing">
+                 <number>6</number>
+                </property>
+                <item>
+                 <widget class="QPushButton" name="cameraPowerButton">
+                  <property name="text">
+                   <string>On</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="cameraAutoOffLabel">
+                  <property name="text">
+                   <string>Auto Off:</string>
+                  </property>
+                  <property name="buddy">
+                   <cstring>cameraAutoOffSpinBox</cstring>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QSpinBox" name="cameraAutoOffSpinBox">
+                  <property name="suffix">
+                   <string> min</string>
+                  </property>
+                  <property name="maximum">
+                   <number>65535</number>
+                  </property>
+                  <property name="singleStep">
+                   <number>1</number>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QCheckBox" name="cameraDisplayCheckBox">
+                  <property name="text">
+                   <string>Display</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QCheckBox" name="cameraIrReceiveCheckBox">
+                  <property name="text">
+                   <string>IR Receive</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QCheckBox" name="cameraIrReturnCheckBox">
+                  <property name="text">
+                   <string>IR Return</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item>
+              <widget class="QGroupBox" name="infoGroupBox">
+               <property name="title">
+                <string>Info</string>
+               </property>
+               <layout class="QFormLayout" name="formLayout">
+                <item row="0" column="0">
+                 <widget class="QLabel" name="vendorLabel">
+                  <property name="text">
+                   <string>Vendor</string>
+                  </property>
+                  <property name="buddy">
+                   <cstring>vendorLineEdit</cstring>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="1">
+                 <widget class="QLineEdit" name="vendorLineEdit">
+                  <property name="readOnly">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="0">
+                 <widget class="QLabel" name="modelLabel">
+                  <property name="text">
+                   <string>Model</string>
+                  </property>
+                  <property name="buddy">
+                   <cstring>modelLineEdit</cstring>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="1">
+                 <widget class="QLineEdit" name="modelLineEdit">
+                  <property name="readOnly">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="0">
+                 <widget class="QLabel" name="rOMVerLabel">
+                  <property name="text">
+                   <string>ROM ver.</string>
+                  </property>
+                  <property name="buddy">
+                   <cstring>rOMVerLineEdit</cstring>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="1">
+                 <widget class="QLineEdit" name="rOMVerLineEdit">
+                  <property name="readOnly">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="3" column="0">
+                 <widget class="QLabel" name="socketLabel">
+                  <property name="text">
+                   <string>Socket</string>
+                  </property>
+                  <property name="buddy">
+                   <cstring>socketLineEdit</cstring>
+                  </property>
+                 </widget>
+                </item>
+                <item row="3" column="1">
+                 <widget class="QLineEdit" name="socketLineEdit">
+                  <property name="readOnly">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="panTiltGroupBox">
+         <property name="title">
+          <string>Pan/Tilt</string>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_5">
+          <item>
+           <widget class="QWidget" name="panTiltJoystickContainerWidget" native="true">
+            <layout class="QHBoxLayout" name="horizontalLayout_5">
+             <item>
+              <spacer name="panTiltJoystickContainerLeftSpacer">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>16</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="QWidget" name="panTiltJoystickButtonContainerWidget" native="true">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <layout class="QGridLayout" name="gridLayout_2">
+                <property name="sizeConstraint">
+                 <enum>QLayout::SetMinimumSize</enum>
+                </property>
+                <property name="margin">
+                 <number>0</number>
+                </property>
+                <property name="spacing">
+                 <number>0</number>
+                </property>
+                <item row="0" column="0">
+                 <widget class="QToolButton" name="panTiltJoystickUpLeftButton">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="text">
+                   <string>UL</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="camera.qrc">
+                    <normaloff>:/icons/icons/UL.png</normaloff>:/icons/icons/UL.png</iconset>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="1">
+                 <widget class="QToolButton" name="panTiltJoystickUpButton">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="text">
+                   <string>U</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="camera.qrc">
+                    <normaloff>:/icons/icons/U.png</normaloff>:/icons/icons/U.png</iconset>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="2">
+                 <widget class="QToolButton" name="panTiltJoystickUpRightButton">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="text">
+                   <string>UR</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="camera.qrc">
+                    <normaloff>:/icons/icons/UR.png</normaloff>:/icons/icons/UR.png</iconset>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="0">
+                 <widget class="QToolButton" name="panTiltJoystickLeftButton">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="text">
+                   <string>L</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="camera.qrc">
+                    <normaloff>:/icons/icons/L.png</normaloff>:/icons/icons/L.png</iconset>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="1">
+                 <widget class="QToolButton" name="panTiltJoystickStopButton">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="text">
+                   <string>S</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="camera.qrc">
+                    <normaloff>:/icons/icons/S.png</normaloff>:/icons/icons/S.png</iconset>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="2">
+                 <widget class="QToolButton" name="panTiltJoystickRightButton">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="text">
+                   <string>R</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="camera.qrc">
+                    <normaloff>:/icons/icons/R.png</normaloff>:/icons/icons/R.png</iconset>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="0">
+                 <widget class="QToolButton" name="panTiltJoystickDownLeftButton">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="text">
+                   <string>DL</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="camera.qrc">
+                    <normaloff>:/icons/icons/DL.png</normaloff>:/icons/icons/DL.png</iconset>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="1">
+                 <widget class="QToolButton" name="panTiltJoystickDownButton">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="text">
+                   <string>D</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="camera.qrc">
+                    <normaloff>:/icons/icons/D.png</normaloff>:/icons/icons/D.png</iconset>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="2">
+                 <widget class="QToolButton" name="panTiltJoystickDownRightButton">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="text">
+                   <string>DR</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="camera.qrc">
+                    <normaloff>:/icons/icons/DR.png</normaloff>:/icons/icons/DR.png</iconset>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item>
+              <spacer name="panTiltJoystickContainerRightSpacer">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>64</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QWidget" name="panTiltButtonContainerWidget" native="true">
+            <layout class="QHBoxLayout" name="horizontalLayout_4">
+             <item>
+              <widget class="QPushButton" name="panTiltHomeButton">
+               <property name="text">
+                <string>Home</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="panTiltResetButton">
+               <property name="text">
+                <string>Reset</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QGroupBox" name="zoomGroupBox">
+            <property name="title">
+             <string>Zoom</string>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_3">
+             <item>
+              <widget class="QSlider" name="zoomSlider">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QWidget" name="zoomButtonContainerWidget" native="true">
+               <layout class="QHBoxLayout" name="horizontalLayout_3">
+                <item>
+                 <widget class="QPushButton" name="zoomTeleButton">
+                  <property name="text">
+                   <string>Tele</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="zoomStopButton">
+                  <property name="text">
+                   <string>Stop</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="zoomWideButton">
+                  <property name="text">
+                   <string>Wide</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QGroupBox" name="exposureGroupBox">
+      <property name="title">
+       <string>Exposure</string>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_6">
+       <item>
+        <widget class="QWidget" name="exposureWidget" native="true">
+         <layout class="QFormLayout" name="formLayout_4">
+          <property name="fieldGrowthPolicy">
+           <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+          </property>
+          <item row="0" column="0">
+           <widget class="QLabel" name="aELabel">
+            <property name="text">
+             <string>AE</string>
+            </property>
+            <property name="buddy">
+             <cstring>aEComboBox</cstring>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QComboBox" name="aEComboBox">
+            <item>
+             <property name="text">
+              <string>Full Auto</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Manual</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Shutter Priority</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Iris Priority</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Gain Priority</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Bright</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Shutter Auto</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Iris Auto</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Gain Auto</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="wBLabel">
+            <property name="text">
+             <string>WB</string>
+            </property>
+            <property name="buddy">
+             <cstring>wBComboBox</cstring>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QComboBox" name="wBComboBox">
+            <item>
+             <property name="text">
+              <string>Auto</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Indoor</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>One Push WB</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>ATW</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Manual</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>One Push Trigger</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="gainLabel">
+            <property name="text">
+             <string>Gain</string>
+            </property>
+            <property name="buddy">
+             <cstring>gainSlider</cstring>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QSlider" name="gainSlider">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0">
+           <widget class="QLabel" name="bGainLabel">
+            <property name="text">
+             <string>B Gain</string>
+            </property>
+            <property name="buddy">
+             <cstring>bGainSlider</cstring>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1">
+           <widget class="QSlider" name="bGainSlider">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="0">
+           <widget class="QLabel" name="rGainLabel">
+            <property name="text">
+             <string>R Gain</string>
+            </property>
+            <property name="buddy">
+             <cstring>rGainSlider</cstring>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="1">
+           <widget class="QSlider" name="rGainSlider">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="0">
+           <widget class="QLabel" name="apertureLabel">
+            <property name="text">
+             <string>Aperture</string>
+            </property>
+            <property name="buddy">
+             <cstring>apertureSlider</cstring>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="1">
+           <widget class="QSlider" name="apertureSlider">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="0">
+           <widget class="QLabel" name="brightLabel">
+            <property name="text">
+             <string>Bright</string>
+            </property>
+            <property name="buddy">
+             <cstring>brightSlider</cstring>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="1">
+           <widget class="QSlider" name="brightSlider">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item row="7" column="0">
+           <widget class="QLabel" name="irisLabel">
+            <property name="text">
+             <string>Iris</string>
+            </property>
+            <property name="buddy">
+             <cstring>irisSlider</cstring>
+            </property>
+           </widget>
+          </item>
+          <item row="7" column="1">
+           <widget class="QSlider" name="irisSlider">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item row="8" column="0">
+           <widget class="QLabel" name="shutterLabel">
+            <property name="text">
+             <string>Shutter</string>
+            </property>
+            <property name="buddy">
+             <cstring>shutterSlider</cstring>
+            </property>
+           </widget>
+          </item>
+          <item row="8" column="1">
+           <widget class="QSlider" name="shutterSlider">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item row="9" column="0">
+           <widget class="QLabel" name="exposureCompensationLabel">
+            <property name="text">
+             <string>Exp. Comp</string>
+            </property>
+            <property name="buddy">
+             <cstring>exposureCompensationSlider</cstring>
+            </property>
+           </widget>
+          </item>
+          <item row="9" column="1">
+           <widget class="QSlider" name="exposureCompensationSlider">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="exposureCompensationCheckBox">
+         <property name="text">
+          <string>Exposure Compensation</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="backLightCompensationCheckBox">
+         <property name="text">
+          <string>Back Light Compensation</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="slowShutterAutoCheckBox">
+         <property name="text">
+          <string>Slow Shutter Auto</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="exposureVerticalSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QWidget" name="widget_2" native="true">
+      <layout class="QVBoxLayout" name="verticalLayout_8">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <property name="margin">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="QGroupBox" name="pictureGroupBox">
+         <property name="title">
+          <string>Picture</string>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout">
+          <item>
+           <widget class="QWidget" name="pictureEffectsContainerWidget" native="true">
+            <layout class="QFormLayout" name="formLayout_5">
+             <property name="fieldGrowthPolicy">
+              <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+             </property>
+             <item row="0" column="0">
+              <widget class="QLabel" name="wideModeLabel">
+               <property name="text">
+                <string>Wide</string>
+               </property>
+               <property name="buddy">
+                <cstring>wideModeComboBox</cstring>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="QComboBox" name="wideModeComboBox">
+               <item>
+                <property name="text">
+                 <string>Off</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Cinema</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>16:9 Full</string>
+                </property>
+               </item>
+              </widget>
+             </item>
+             <item row="2" column="0">
+              <widget class="QLabel" name="pictureEffectLabel">
+               <property name="text">
+                <string>Picture Effect</string>
+               </property>
+               <property name="buddy">
+                <cstring>pictureEffectComboBox</cstring>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="1">
+              <widget class="QComboBox" name="pictureEffectComboBox">
+               <item>
+                <property name="text">
+                 <string>Off</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Pastel</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>NegArt</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Sepia</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>B&amp;W</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Solarize</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Mosaic</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Slim</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Stretch</string>
+                </property>
+               </item>
+              </widget>
+             </item>
+             <item row="3" column="0">
+              <widget class="QLabel" name="digitalEffectLabel">
+               <property name="text">
+                <string>Digital Effect</string>
+               </property>
+               <property name="buddy">
+                <cstring>digitalEffectComboBox</cstring>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="1">
+              <widget class="QComboBox" name="digitalEffectComboBox">
+               <item>
+                <property name="text">
+                 <string>Off</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Still</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Flash</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Lumi.</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Trail</string>
+                </property>
+               </item>
+              </widget>
+             </item>
+             <item row="4" column="0">
+              <widget class="QLabel" name="effectLevelLabel">
+               <property name="text">
+                <string>Effect Level</string>
+               </property>
+               <property name="buddy">
+                <cstring>effectLevelSpinBox</cstring>
+               </property>
+              </widget>
+             </item>
+             <item row="4" column="1">
+              <widget class="QSpinBox" name="effectLevelSpinBox">
+               <property name="maximum">
+                <number>32</number>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="pictureFreezeCheckBox">
+            <property name="text">
+             <string>Freeze</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="pictureMirrorCheckBox">
+            <property name="text">
+             <string>Mirror</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QGroupBox" name="memoryGroupBox">
+            <property name="title">
+             <string>Memory</string>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_9">
+             <item>
+              <widget class="QListWidget" name="memoryListWidget">
+               <item>
+                <property name="text">
+                 <string>Memory 0</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Memory 1</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Memory 2</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Memory 3</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Memory 4</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Memory 5</string>
+                </property>
+               </item>
+              </widget>
+             </item>
+             <item>
+              <widget class="QWidget" name="memoryButtonsContainerWidget" native="true">
+               <layout class="QHBoxLayout" name="horizontalLayout_6">
+                <item>
+                 <widget class="QPushButton" name="memoryResetButton">
+                  <property name="text">
+                   <string>Reset</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="memorySetButton">
+                  <property name="text">
+                   <string>Set</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="memoryRecallButton">
+                  <property name="text">
+                   <string>Recall</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <spacer name="verticalSpacer">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>25</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources>
+  <include location="camera.qrc"/>
+ </resources>
+ <connections/>
+</ui>
