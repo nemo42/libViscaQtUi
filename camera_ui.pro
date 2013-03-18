@@ -22,3 +22,6 @@ FORMS += \
 
 RESOURCES += \
     camera.qrc
+
+LIBS += \
+    -lvisca
