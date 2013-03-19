@@ -1,6 +1,11 @@
 #include "camerawindow.h"
 #include "ui_camerawindow.h"
 
+const UInt8_t VISCA_POWER_ON = 2;
+const UInt8_t VISCA_POWER_OFF = 3;
+const int VISCA_DIGITAL_EFFECT_LEVEL_FLASH_TRAIL_MAX = 0x18;
+const int VISCA_DIGITAL_EFFECT_LEVEL_LUMI_STILL_MAX =0x20;
+
 CameraWindow::CameraWindow(QWidget *parent)
     : QMainWindow(parent),
       ui(new Ui::CameraWindow),
@@ -59,15 +64,10 @@ void CameraWindow::CloseInterface()
 
 void CameraWindow::on_cameraPowerButton_clicked()
 {
-    UInt8_t power = 3;
+    UInt8_t power = VISCA_POWER_OFF;
 //    VISCA_get_power(&interface, &camera, &power);
-    // TODO: Power off (3) seems to wait forever for a response, only do power on (2)
-    VISCA_set_power(&interface, &camera, power == 2 ? 3 : 2);
-}
-
-void CameraWindow::on_cameraAutoOffSpinBox_valueChanged(int arg1)
-{
-
+    // TODO: Power off seems to wait forever for a response, only do power on
+    VISCA_set_power(&interface, &camera, power == VISCA_POWER_ON ? VISCA_POWER_OFF : VISCA_POWER_ON);
 }
 
 void CameraWindow::on_cameraDisplayCheckBox_stateChanged(int arg1)
@@ -91,15 +91,9 @@ void CameraWindow::on_cameraIrReceiveCheckBox_stateChanged(int arg1)
         VISCA_set_irreceive_off(&interface, &camera);
         break;
     case Qt::Checked:
-            VISCA_set_irreceive_on(&interface, &camera);
+        VISCA_set_irreceive_on(&interface, &camera);
         break;
     }
-
-}
-
-void CameraWindow::on_cameraIrReturnCheckBox_stateChanged(int arg1)
-{
-
 }
 
 void CameraWindow::on_panTiltJoystickUpLeftButton_clicked()
@@ -159,6 +153,7 @@ void CameraWindow::on_panTiltResetButton_clicked()
 
 void CameraWindow::on_zoomSlider_valueChanged(int value)
 {
+    // TODO: Update on separate thread
     VISCA_set_zoom_value(&interface, &camera, value);
 }
 
@@ -175,4 +170,87 @@ void CameraWindow::on_zoomStopButton_clicked()
 void CameraWindow::on_zoomWideButton_clicked()
 {
     VISCA_set_zoom_wide(&interface, &camera);
+}
+
+void CameraWindow::on_wideModeComboBox_currentIndexChanged(int index)
+{
+    VISCA_set_wide_mode(&interface, &camera, index);
+}
+
+void CameraWindow::on_pictureEffectComboBox_currentIndexChanged(int index)
+{
+    VISCA_set_picture_effect(&interface, &camera, index);
+}
+
+void CameraWindow::on_digitalEffectComboBox_currentIndexChanged(int index)
+{
+    switch (index)
+    {
+    case VISCA_DIGITAL_EFFECT_FLASH:
+    case VISCA_DIGITAL_EFFECT_TRAIL:
+        ui->digitalEffectLevelSpinBox->setMaximum(VISCA_DIGITAL_EFFECT_LEVEL_FLASH_TRAIL_MAX);
+        ui->digitalEffectLevelSpinBox->setEnabled(true);
+        break;
+    case VISCA_DIGITAL_EFFECT_STILL:
+    case VISCA_DIGITAL_EFFECT_LUMI:
+        ui->digitalEffectLevelSpinBox->setMaximum(VISCA_DIGITAL_EFFECT_LEVEL_LUMI_STILL_MAX);
+        ui->digitalEffectLevelSpinBox->setEnabled(true);
+        break;
+    default:
+        ui->digitalEffectLevelSpinBox->setEnabled(false);
+        break;
+    }
+
+    VISCA_set_digital_effect(&interface, &camera, index);
+}
+
+void CameraWindow::on_digitalEffectLevelSpinBox_valueChanged(int arg1)
+{
+    VISCA_set_digital_effect_level(&interface, &camera, arg1);
+}
+
+void CameraWindow::on_pictureFreezeCheckBox_stateChanged(int arg1)
+{
+    switch (arg1)
+    {
+    case Qt::Unchecked:
+        VISCA_set_freeze(&interface, &camera, VISCA_POWER_OFF);
+        break;
+    case Qt::Checked:
+        VISCA_set_freeze(&interface, &camera, VISCA_POWER_ON);
+        break;
+    }
+}
+
+void CameraWindow::on_pictureMirrorCheckBox_stateChanged(int arg1)
+{
+    switch (arg1)
+    {
+    case Qt::Unchecked:
+        VISCA_set_mirror(&interface, &camera, VISCA_POWER_OFF);
+        break;
+    case Qt::Checked:
+        VISCA_set_mirror(&interface, &camera, VISCA_POWER_ON);
+        break;
+    }
+}
+
+void CameraWindow::on_memoryListWidget_itemSelectionChanged()
+{
+    ui->memoryButtonsContainerWidget->setEnabled(true);
+}
+
+void CameraWindow::on_memoryResetButton_clicked()
+{
+    VISCA_memory_reset(&interface, &camera, ui->memoryListWidget->currentRow());
+}
+
+void CameraWindow::on_memorySetButton_clicked()
+{
+    VISCA_memory_set(&interface, &camera, ui->memoryListWidget->currentRow());
+}
+
+void CameraWindow::on_memoryRecallButton_clicked()
+{
+    VISCA_memory_recall(&interface, &camera, ui->memoryListWidget->currentRow());
 }

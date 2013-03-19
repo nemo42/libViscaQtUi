@@ -16,7 +16,7 @@
   <widget class="QWidget" name="centralwidget">
    <layout class="QHBoxLayout" name="horizontalLayout">
     <item>
-     <widget class="QWidget" name="widget" native="true">
+     <widget class="QWidget" name="cameraPanTiltAndZoomContainerWidget" native="true">
       <layout class="QVBoxLayout" name="verticalLayout_7">
        <property name="spacing">
         <number>0</number>
@@ -59,29 +59,6 @@
                  </widget>
                 </item>
                 <item>
-                 <widget class="QLabel" name="cameraAutoOffLabel">
-                  <property name="text">
-                   <string>Auto Off:</string>
-                  </property>
-                  <property name="buddy">
-                   <cstring>cameraAutoOffSpinBox</cstring>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QSpinBox" name="cameraAutoOffSpinBox">
-                  <property name="suffix">
-                   <string> min</string>
-                  </property>
-                  <property name="maximum">
-                   <number>65535</number>
-                  </property>
-                  <property name="singleStep">
-                   <number>1</number>
-                  </property>
-                 </widget>
-                </item>
-                <item>
                  <widget class="QCheckBox" name="cameraDisplayCheckBox">
                   <property name="text">
                    <string>Display</string>
@@ -92,13 +69,6 @@
                  <widget class="QCheckBox" name="cameraIrReceiveCheckBox">
                   <property name="text">
                    <string>IR Receive</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QCheckBox" name="cameraIrReturnCheckBox">
-                  <property name="text">
-                   <string>IR Return</string>
                   </property>
                  </widget>
                 </item>
@@ -466,6 +436,19 @@
             </layout>
            </widget>
           </item>
+          <item>
+           <spacer name="verticalSpacer_1">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
          </layout>
         </widget>
        </item>
@@ -599,6 +582,9 @@
           </item>
           <item row="2" column="1">
            <widget class="QSlider" name="gainSlider">
+            <property name="maximum">
+             <number>7</number>
+            </property>
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
             </property>
@@ -616,6 +602,9 @@
           </item>
           <item row="3" column="1">
            <widget class="QSlider" name="bGainSlider">
+            <property name="maximum">
+             <number>255</number>
+            </property>
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
             </property>
@@ -633,6 +622,9 @@
           </item>
           <item row="4" column="1">
            <widget class="QSlider" name="rGainSlider">
+            <property name="maximum">
+             <number>255</number>
+            </property>
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
             </property>
@@ -650,6 +642,9 @@
           </item>
           <item row="5" column="1">
            <widget class="QSlider" name="apertureSlider">
+            <property name="maximum">
+             <number>15</number>
+            </property>
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
             </property>
@@ -667,6 +662,9 @@
           </item>
           <item row="6" column="1">
            <widget class="QSlider" name="brightSlider">
+            <property name="maximum">
+             <number>23</number>
+            </property>
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
             </property>
@@ -684,6 +682,9 @@
           </item>
           <item row="7" column="1">
            <widget class="QSlider" name="irisSlider">
+            <property name="maximum">
+             <number>17</number>
+            </property>
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
             </property>
@@ -701,6 +702,9 @@
           </item>
           <item row="8" column="1">
            <widget class="QSlider" name="shutterSlider">
+            <property name="maximum">
+             <number>19</number>
+            </property>
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
             </property>
@@ -718,6 +722,12 @@
           </item>
           <item row="9" column="1">
            <widget class="QSlider" name="exposureCompensationSlider">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="maximum">
+             <number>14</number>
+            </property>
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
             </property>
@@ -764,7 +774,7 @@
      </widget>
     </item>
     <item>
-     <widget class="QWidget" name="widget_2" native="true">
+     <widget class="QWidget" name="pictureAndMemoryContainerWidget" native="true">
       <layout class="QVBoxLayout" name="verticalLayout_8">
        <property name="spacing">
         <number>0</number>
@@ -912,17 +922,20 @@
               </widget>
              </item>
              <item row="4" column="0">
-              <widget class="QLabel" name="effectLevelLabel">
+              <widget class="QLabel" name="digitalEffectLevelLabel">
                <property name="text">
                 <string>Effect Level</string>
                </property>
                <property name="buddy">
-                <cstring>effectLevelSpinBox</cstring>
+                <cstring>digitalEffectLevelSpinBox</cstring>
                </property>
               </widget>
              </item>
              <item row="4" column="1">
-              <widget class="QSpinBox" name="effectLevelSpinBox">
+              <widget class="QSpinBox" name="digitalEffectLevelSpinBox">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
                <property name="maximum">
                 <number>32</number>
                </property>
@@ -945,91 +958,94 @@
             </property>
            </widget>
           </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="memoryGroupBox">
+         <property name="title">
+          <string>Memory</string>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_9">
           <item>
-           <widget class="QGroupBox" name="memoryGroupBox">
-            <property name="title">
-             <string>Memory</string>
+           <widget class="QListWidget" name="memoryListWidget">
+            <item>
+             <property name="text">
+              <string>Memory 0</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Memory 1</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Memory 2</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Memory 3</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Memory 4</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Memory 5</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item>
+           <widget class="QWidget" name="memoryButtonsContainerWidget" native="true">
+            <property name="enabled">
+             <bool>false</bool>
             </property>
-            <layout class="QVBoxLayout" name="verticalLayout_9">
+            <layout class="QHBoxLayout" name="horizontalLayout_6">
              <item>
-              <widget class="QListWidget" name="memoryListWidget">
-               <item>
-                <property name="text">
-                 <string>Memory 0</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Memory 1</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Memory 2</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Memory 3</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Memory 4</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Memory 5</string>
-                </property>
-               </item>
+              <widget class="QPushButton" name="memoryResetButton">
+               <property name="text">
+                <string>Reset</string>
+               </property>
               </widget>
              </item>
              <item>
-              <widget class="QWidget" name="memoryButtonsContainerWidget" native="true">
-               <layout class="QHBoxLayout" name="horizontalLayout_6">
-                <item>
-                 <widget class="QPushButton" name="memoryResetButton">
-                  <property name="text">
-                   <string>Reset</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QPushButton" name="memorySetButton">
-                  <property name="text">
-                   <string>Set</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QPushButton" name="memoryRecallButton">
-                  <property name="text">
-                   <string>Recall</string>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
+              <widget class="QPushButton" name="memorySetButton">
+               <property name="text">
+                <string>Set</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="memoryRecallButton">
+               <property name="text">
+                <string>Recall</string>
+               </property>
               </widget>
              </item>
             </layout>
            </widget>
           </item>
-          <item>
-           <spacer name="verticalSpacer">
-            <property name="orientation">
-             <enum>Qt::Vertical</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>20</width>
-              <height>40</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
          </layout>
         </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_3">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
        </item>
       </layout>
      </widget>

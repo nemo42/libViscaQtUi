@@ -19,13 +19,9 @@ public:
 private slots:
     void on_cameraPowerButton_clicked();
 
-    void on_cameraAutoOffSpinBox_valueChanged(int arg1);
-
     void on_cameraDisplayCheckBox_stateChanged(int arg1);
 
     void on_cameraIrReceiveCheckBox_stateChanged(int arg1);
-
-    void on_cameraIrReturnCheckBox_stateChanged(int arg1);
 
     void on_panTiltJoystickUpLeftButton_clicked();
 
@@ -56,6 +52,26 @@ private slots:
     void on_zoomStopButton_clicked();
 
     void on_zoomWideButton_clicked();
+
+    void on_wideModeComboBox_currentIndexChanged(int index);
+
+    void on_pictureEffectComboBox_currentIndexChanged(int index);
+
+    void on_digitalEffectComboBox_currentIndexChanged(int index);
+
+    void on_digitalEffectLevelSpinBox_valueChanged(int arg1);
+
+    void on_pictureFreezeCheckBox_stateChanged(int arg1);
+
+    void on_pictureMirrorCheckBox_stateChanged(int arg1);
+
+    void on_memoryListWidget_itemSelectionChanged();
+
+    void on_memoryResetButton_clicked();
+
+    void on_memorySetButton_clicked();
+
+    void on_memoryRecallButton_clicked();
 
 private:
     void OpenInterface();
