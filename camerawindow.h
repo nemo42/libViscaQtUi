@@ -53,6 +53,32 @@ private slots:
 
     void on_zoomWideButton_clicked();
 
+    void on_wBComboBox_currentIndexChanged(int index);
+
+    void on_rGainSlider_valueChanged(int value);
+
+    void on_bGainSlider_valueChanged(int value);
+
+    void on_aEComboBox_currentIndexChanged(int index);
+
+    void on_shutterSlider_valueChanged(int value);
+
+    void on_irisSlider_valueChanged(int value);
+
+    void on_gainSlider_valueChanged(int value);
+
+    void on_brightSlider_valueChanged(int value);
+
+    void on_apertureSlider_valueChanged(int value);
+
+    void on_exposureCompensationSlider_valueChanged(int value);
+
+    void on_exposureCompensationCheckBox_stateChanged(int arg1);
+
+    void on_backLightCompensationCheckBox_stateChanged(int arg1);
+
+    void on_slowShutterAutoCheckBox_stateChanged(int arg1);
+
     void on_wideModeComboBox_currentIndexChanged(int index);
 
     void on_pictureEffectComboBox_currentIndexChanged(int index);
@@ -76,6 +102,7 @@ private slots:
 private:
     void OpenInterface();
     void CloseInterface();
+    void UpdateAESliders(int index);
 
 private:
     Ui::CameraWindow *ui;

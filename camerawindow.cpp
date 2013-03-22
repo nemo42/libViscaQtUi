@@ -5,6 +5,25 @@ const UInt8_t VISCA_POWER_ON = 2;
 const UInt8_t VISCA_POWER_OFF = 3;
 const int VISCA_DIGITAL_EFFECT_LEVEL_FLASH_TRAIL_MAX = 0x18;
 const int VISCA_DIGITAL_EFFECT_LEVEL_LUMI_STILL_MAX =0x20;
+const int VISCA_AE_MODES[] =
+{
+    VISCA_AUTO_EXP_FULL_AUTO,
+    VISCA_AUTO_EXP_MANUAL,
+    VISCA_AUTO_EXP_SHUTTER_PRIORITY,
+    VISCA_AUTO_EXP_IRIS_PRIORITY,
+    VISCA_AUTO_EXP_GAIN_PRIORITY,
+    VISCA_AUTO_EXP_SHUTTER_AUTO,
+    VISCA_AUTO_EXP_IRIS_AUTO,
+    VISCA_AUTO_EXP_GAIN_AUTO,
+    VISCA_AUTO_EXP_BRIGHT
+};
+
+// Enable states of the sliders for the different AE modes.
+//                            Auto,  Man,  S Pri, I Pri, G Pri, S Aut, I Aut, G Aut, Bright
+const bool SHUTTER_ENABLED[] = {false, true, true, false, false, false, true, true, false};
+const bool IRIS_ENABLED[]    = {false, true, false, true, false, true, false, true, false};
+const bool GAIN_ENABLED[]    = {false, true, false, false, true, true, true, false, false};
+const bool BRIGHT_ENABLED[]  = {false, false, false, false, false, false, false, false, true};
 
 CameraWindow::CameraWindow(QWidget *parent)
     : QMainWindow(parent),
@@ -60,6 +79,15 @@ void CameraWindow::CloseInterface()
         fprintf(stderr,"\n");
     }
     VISCA_close_serial(&interface);
+}
+
+void CameraWindow::UpdateAESliders(int index)
+{
+    ui->shutterSlider->setEnabled(SHUTTER_ENABLED[index]);
+    ui->irisSlider->setEnabled(IRIS_ENABLED[index]);
+    ui->gainSlider->setEnabled(GAIN_ENABLED[index]);
+    ui->brightSlider->setEnabled(BRIGHT_ENABLED[index]);
+    ui->backLightCompensationCheckBox->setEnabled(index  == 0);
 }
 
 void CameraWindow::on_cameraPowerButton_clicked()
@@ -170,6 +198,109 @@ void CameraWindow::on_zoomStopButton_clicked()
 void CameraWindow::on_zoomWideButton_clicked()
 {
     VISCA_set_zoom_wide(&interface, &camera);
+}
+
+void CameraWindow::on_wBComboBox_currentIndexChanged(int index)
+{
+    VISCA_set_whitebal_mode(&interface, &camera, index);
+    ui->bGainSlider->setEnabled(index == VISCA_WB_MANUAL);
+    ui->rGainSlider->setEnabled(index == VISCA_WB_MANUAL);
+
+    UInt16_t rGain, bGain;
+    VISCA_get_rgain_value(&interface, &camera, &rGain);
+    VISCA_get_bgain_value(&interface, &camera, &bGain);
+    ui->bGainSlider->setValue(bGain);
+    ui->rGainSlider->setValue(rGain);
+}
+
+void CameraWindow::on_rGainSlider_valueChanged(int value)
+{
+    VISCA_set_rgain_value(&interface, &camera, value);
+}
+
+void CameraWindow::on_bGainSlider_valueChanged(int value)
+{
+    VISCA_set_bgain_value(&interface, &camera, value);
+}
+
+void CameraWindow::on_aEComboBox_currentIndexChanged(int index)
+{
+    VISCA_set_auto_exp_mode(&interface, &camera, VISCA_AE_MODES[index]);
+    UpdateAESliders(index);
+}
+
+void CameraWindow::on_shutterSlider_valueChanged(int value)
+{
+    VISCA_set_shutter_value(&interface, &camera, value);
+}
+
+void CameraWindow::on_irisSlider_valueChanged(int value)
+{
+    VISCA_set_iris_value(&interface, &camera, value);
+}
+
+void CameraWindow::on_gainSlider_valueChanged(int value)
+{
+    VISCA_set_gain_value(&interface, &camera, value);
+}
+
+void CameraWindow::on_brightSlider_valueChanged(int value)
+{
+    VISCA_set_bright_value(&interface, &camera, value);
+}
+
+void CameraWindow::on_apertureSlider_valueChanged(int value)
+{
+    VISCA_set_aperture_value(&interface, &camera, value);
+}
+
+void CameraWindow::on_exposureCompensationSlider_valueChanged(int value)
+{
+    VISCA_set_exp_comp_value(&interface, &camera, value);
+}
+
+void CameraWindow::on_exposureCompensationCheckBox_stateChanged(int arg1)
+{
+    switch (arg1)
+    {
+    case Qt::Unchecked:
+        ui->exposureCompensationSlider->setEnabled(false);
+        VISCA_set_exp_comp_power(&interface, &camera, VISCA_POWER_OFF);
+        break;
+    case Qt::Checked:
+        ui->exposureCompensationSlider->setEnabled(true);
+        VISCA_set_exp_comp_power(&interface, &camera, VISCA_POWER_ON);
+        break;
+    }
+
+}
+
+void CameraWindow::on_backLightCompensationCheckBox_stateChanged(int arg1)
+{
+    switch (arg1)
+    {
+    case Qt::Unchecked:
+        VISCA_set_backlight_comp(&interface, &camera, VISCA_POWER_OFF);
+        break;
+    case Qt::Checked:
+        VISCA_set_backlight_comp(&interface, &camera, VISCA_POWER_ON);
+        break;
+    }
+
+}
+
+void CameraWindow::on_slowShutterAutoCheckBox_stateChanged(int arg1)
+{
+    switch (arg1)
+    {
+    case Qt::Unchecked:
+        VISCA_set_slow_shutter_auto(&interface, &camera, VISCA_POWER_OFF);
+        break;
+    case Qt::Checked:
+        VISCA_set_slow_shutter_auto(&interface, &camera, VISCA_POWER_ON);
+        break;
+    }
+
 }
 
 void CameraWindow::on_wideModeComboBox_currentIndexChanged(int index)
