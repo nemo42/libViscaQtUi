@@ -12,3 +12,5 @@ TODO:
 * Run slider updates on separate thread to free up UI
 * Variable zoom/pan/tilt-speed
 * Add One Push WB Trigger button
+* Add serialport selection and configuration
+* Add lookuptable for hex value vs. camera model/manufacturer and display in UI
