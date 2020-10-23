@@ -1,8 +1,10 @@
+#include <unistd.h>
+#include <sys/ioctl.h>
 #include "camerawindow.h"
 #include "ui_camerawindow.h"
 
-const UInt8_t VISCA_POWER_ON = 2;
-const UInt8_t VISCA_POWER_OFF = 3;
+const uint8_t VISCA_POWER_ON = 2;
+const uint8_t VISCA_POWER_OFF = 3;
 const int VISCA_DIGITAL_EFFECT_LEVEL_FLASH_TRAIL_MAX = 0x18;
 const int VISCA_DIGITAL_EFFECT_LEVEL_LUMI_STILL_MAX =0x20;
 const int VISCA_AE_MODES[] =
@@ -28,7 +30,7 @@ const bool BRIGHT_ENABLED[]  = {false, false, false, false, false, false, false,
 CameraWindow::CameraWindow(QWidget *parent)
     : QMainWindow(parent),
       ui(new Ui::CameraWindow),
-      ttyDev("/dev/ttyS0"),
+      ttyDev("/dev/ttyUSB1"),
       panSpeed(1),
       tiltSpeed(1)
 {
@@ -92,7 +94,7 @@ void CameraWindow::UpdateAESliders(int index)
 
 void CameraWindow::on_cameraPowerButton_clicked()
 {
-    UInt8_t power = VISCA_POWER_OFF;
+    uint8_t power = VISCA_POWER_OFF;
 //    VISCA_get_power(&interface, &camera, &power);
     // TODO: Power off seems to wait forever for a response, only do power on
     VISCA_set_power(&interface, &camera, power == VISCA_POWER_ON ? VISCA_POWER_OFF : VISCA_POWER_ON);
@@ -206,7 +208,7 @@ void CameraWindow::on_wBComboBox_currentIndexChanged(int index)
     ui->bGainSlider->setEnabled(index == VISCA_WB_MANUAL);
     ui->rGainSlider->setEnabled(index == VISCA_WB_MANUAL);
 
-    UInt16_t rGain, bGain;
+    uint16_t rGain, bGain;
     VISCA_get_rgain_value(&interface, &camera, &rGain);
     VISCA_get_bgain_value(&interface, &camera, &bGain);
     ui->bGainSlider->setValue(bGain);

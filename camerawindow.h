@@ -2,7 +2,7 @@
 #define CAMERAWINDOW_H
 
 #include <QMainWindow>
-#include <libvisca/libvisca.h>
+#include <visca/libvisca.h>
 
 namespace Ui {
 class CameraWindow;
@@ -108,7 +108,7 @@ private:
     Ui::CameraWindow *ui;
     VISCAInterface_t interface;
     VISCACamera_t camera;
-    char* ttyDev;
+    const char* ttyDev;
 
     unsigned int panSpeed;
     unsigned int tiltSpeed;
